@@ -1,0 +1,24 @@
+{
+  "name": "六爻排盘",
+  "short_name": "六爻排盘",
+  "description": "六爻排盘：手动摇卦、自动生成卦象、六亲、神煞与变卦",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#f0f0f0",
+  "theme_color": "#f0f0f0",
+  "icons": [
+    {
+      "src": "img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

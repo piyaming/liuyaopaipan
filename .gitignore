@@ -4,3 +4,10 @@
 /__pycache__
 *.qrc
 *.spec
+
+# Vercel 部署：项目关联配置与临时文件
+web/.vercel/
+.vercel-tmp/
+
+# Cloudflare Pages 拖拽部署副本（由 web/ 复制生成，不入库）
+web-dist/

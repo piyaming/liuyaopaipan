@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>六爻排盘</title>
+<meta name="theme-color" content="#f0f0f0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="icon" type="image/png" href="img/icon-192.png">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+  <header class="titlebar">
+    <img class="logo" src="img/header.jpg" alt="六爻排盘">
+    <span>六爻排盘</span>
+  </header>
+
+  <!-- 第一行：公历时间 -->
+  <div class="row">
+    <span class="lb lb40">公历</span>
+    <select id="selYear" class="sc scYear" title="年份（1900-2100）"></select>
+    <span class="lb lb30">年</span>
+    <select id="selMonth" class="sc"></select>
+    <span class="lb lb30">月</span>
+    <select id="selDay" class="sc"></select>
+    <span class="lb lb30">日</span>
+    <select id="selHour" class="sc"></select>
+    <span class="lb lb30">时</span>
+    <select id="selMinute" class="sc"></select>
+    <span class="lb lb30">分</span>
+    <button id="btnContact" class="flat-btn">联系作者</button>
+    <span class="spacer"></span>
+  </div>
+
+  <!-- 第二行：农历（干支）与占事 -->
+  <div class="row">
+    <span class="lb lb40">农历</span>
+    <select id="selYueZhi" class="sc"></select>
+    <span class="lb lb30">月</span>
+    <select id="selRiGan" class="sc"></select>
+    <select id="selRiZhi" class="sc"></select>
+    <span class="lb lb30">日</span>
+    <span class="lb lb60">占事：</span>
+    <input id="inpZhanShi" class="zhan-input" type="text">
+  </div>
+
+  <!-- 第三行：爻位操作区 + 排盘结果 -->
+  <div class="main-row">
+    <div class="yao-col">
+      <div class="yao-row"><span class="lb lb30">上爻</span><input type="checkbox" id="chk6" class="chk"><button id="btn6" class="yao-btn">■■■■■■</button></div>
+      <div class="yao-row"><span class="lb lb30">五爻</span><input type="checkbox" id="chk5" class="chk"><button id="btn5" class="yao-btn">■■■■■■</button></div>
+      <div class="yao-row"><span class="lb lb30">四爻</span><input type="checkbox" id="chk4" class="chk"><button id="btn4" class="yao-btn">■■■■■■</button></div>
+      <div class="yao-row"><span class="lb lb30">三爻</span><input type="checkbox" id="chk3" class="chk"><button id="btn3" class="yao-btn">■■■■■■</button></div>
+      <div class="yao-row"><span class="lb lb30">二爻</span><input type="checkbox" id="chk2" class="chk"><button id="btn2" class="yao-btn">■■■■■■</button></div>
+      <div class="yao-row"><span class="lb lb30">初爻</span><input type="checkbox" id="chk1" class="chk"><button id="btn1" class="yao-btn">■■■■■■</button></div>
+      <button id="btnPaipan" class="action-btn">排&nbsp;&nbsp;盘</button>
+      <button id="btnCopy" class="action-btn">复&nbsp;&nbsp;制</button>
+      <button id="btnReset" class="action-btn">重&nbsp;&nbsp;填</button>
+      <span class="vspacer"></span>
+    </div>
+    <pre id="result" class="result"></pre>
+  </div>
+</div>
+
+<!-- 联系作者对话框 -->
+<div id="dialogMask" class="dialog-mask" hidden>
+  <div class="dialog" role="dialog" aria-modal="true" aria-label="联系作者">
+    <div class="dialog-title">
+      <img class="dialog-logo" src="img/header.jpg" alt="">
+      <span>联系作者</span>
+      <button id="btnDialogClose" class="dialog-x" title="关闭">✕</button>
+    </div>
+    <div class="dialog-body">
+      <div class="qr-box">
+        <img src="img/lx.jpg" alt="微信二维码">
+        <span>添加好友</span>
+      </div>
+      <div class="qr-box">
+        <img src="img/sk.jpg" alt="打赏二维码">
+        <span>打赏作者</span>
+      </div>
+    </div>
+    <p class="dialog-info">算卦以及软件问题请微信扫码联系作者</p>
+    <div class="dialog-footer"><button id="btnDialogOk" class="ok-btn">OK</button></div>
+  </div>
+</div>
+
+<div id="rotateHint" class="rotate-hint">请将手机横屏使用</div>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="js/jieqi_data.js"></script>
+<script src="js/sizhu.js"></script>
+<script src="js/shensha.js"></script>
+<script src="js/bagua.js"></script>
+<script src="js/output.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

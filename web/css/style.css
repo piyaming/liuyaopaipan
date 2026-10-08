@@ -1,0 +1,355 @@
+/* 六爻排盘 Web 版样式（布局对应 PyQt5 版 GUI.ui，728x350 的窗口结构） */
+
+* { box-sizing: border-box; }
+
+/* hidden 属性优先于任何 display 设置 */
+[hidden] { display: none !important; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "宋体", SimSun, "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  font-size: 14px;
+  color: #1c1c1c;
+  background: #e4e7eb;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 主面板：仿 Qt 窗口（宽 728 起，宽屏时可放大） */
+.app {
+  min-width: 728px;
+  max-width: 1180px;
+  margin: 14px auto;
+  padding: 10px 14px 14px;
+  background: #f0f0f0;
+  border: 1px solid #c3c3c3;
+  border-radius: 6px;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, .14);
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 9px 2px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.titlebar .logo {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 1px solid #b5b5b5;
+}
+
+/* ---- 行与控件 ---- */
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-bottom: 6px;
+}
+
+.lb { flex: none; text-align: center; }
+.lb40 { width: 40px; text-align: left; padding-left: 4px; }
+.lb30 { width: 30px; }
+.lb60 { width: 62px; text-align: right; padding-right: 6px; }
+
+.sc {
+  flex: none;
+  width: 46px;
+  height: 28px;
+  margin-right: 2px;
+  border: 1px solid #ababab;
+  border-radius: 3px;
+  background: #fff;
+  font: inherit;
+  padding: 0 2px;
+}
+
+.scYear { width: 68px; }
+
+.spacer { flex: 1; }
+
+/* 联系作者：对应原版 flat 扁平按钮 */
+.flat-btn {
+  flex: none;
+  height: 28px;
+  margin-left: 10px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  font: inherit;
+  color: #0b57d0;
+  cursor: pointer;
+}
+
+.flat-btn:hover { background: #dfe6f2; }
+.flat-btn:active { background: #d0dbec; }
+
+/* 占事输入框 */
+.zhan-input {
+  flex: 1;
+  min-width: 240px;
+  height: 28px;
+  border: 1px solid #ababab;
+  border-radius: 3px;
+  background: #fff;
+  font: inherit;
+  padding: 0 6px;
+}
+
+.zhan-input:focus, .sc:focus {
+  outline: none;
+  border-color: #5f8fd9;
+  box-shadow: 0 0 0 2px rgba(95, 143, 217, .18);
+}
+
+/* ---- 排盘区 ---- */
+.main-row {
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.yao-col {
+  flex: none;
+  width: 152px;
+  display: flex;
+  flex-direction: column;
+}
+
+.yao-row {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  margin-bottom: 3px;
+}
+
+.chk {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin: 0 1px 0 0;
+  accent-color: #3d6db5;
+}
+
+.yao-btn {
+  flex: none;
+  width: 100px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  font: inherit;
+  font-size: 15px;
+  letter-spacing: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.yao-btn:hover { background: #e1e5ea; }
+.yao-btn:active { background: #d4dae1; }
+
+.action-btn {
+  width: 160px;
+  height: 30px;
+  margin-top: 5px;
+  border: 1px solid #9f9f9f;
+  border-radius: 4px;
+  background: linear-gradient(#fdfdfd, #ececec);
+  font: inherit;
+  cursor: pointer;
+}
+
+.action-btn:hover { background: #f2f6fc; border-color: #7d9cc9; }
+.action-btn:active { background: #e3ebf6; }
+
+#btnPaipan {
+  font-weight: 700;
+}
+
+.vspacer { flex: 1; }
+
+/* 结果文本框：对应 QPlainTextEdit（宋体 11pt、白底） */
+.result {
+  flex: 1;
+  min-width: 0;
+  min-height: 420px;
+  max-height: 76vh;
+  margin: 0;
+  padding: 8px 10px;
+  background: #fff;
+  border: 1px solid #ababab;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 11pt;
+  line-height: 1.5;
+  white-space: pre;
+  overflow: auto;
+}
+
+/* ---- 联系作者对话框 ---- */
+.dialog-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 24, 30, .38);
+}
+
+.dialog {
+  width: 352px;
+  padding: 0 0 10px;
+  background: #f0f0f0;
+  border: 1px solid #9a9a9a;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .3);
+}
+
+.dialog-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #d5d5d5;
+  font-weight: 700;
+}
+
+.dialog-logo { width: 18px; height: 18px; border-radius: 3px; }
+
+.dialog-x {
+  margin-left: auto;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  font: inherit;
+  color: #666;
+  cursor: pointer;
+}
+
+.dialog-x:hover { background: #e2e2e2; color: #000; }
+
+.dialog-body {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 14px 10px 6px;
+}
+
+.qr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.qr-box img {
+  width: 132px;
+  height: 132px;
+  object-fit: contain;
+  border: 1px solid #cfcfcf;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.dialog-info {
+  margin: 6px 0 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #444;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.ok-btn {
+  min-width: 84px;
+  height: 28px;
+  border: 1px solid #9f9f9f;
+  border-radius: 4px;
+  background: linear-gradient(#fdfdfd, #ececec);
+  font: inherit;
+  cursor: pointer;
+}
+
+.ok-btn:hover { background: #f2f6fc; border-color: #7d9cc9; }
+
+/* ---- 复制提示 ---- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 34px;
+  transform: translateX(-50%);
+  z-index: 30;
+  padding: 7px 18px;
+  border-radius: 16px;
+  background: rgba(30, 34, 40, .86);
+  color: #fff;
+  font-size: 13px;
+  pointer-events: none;
+}
+
+/* ---- 手机竖屏提示（界面按横屏设计） ---- */
+.rotate-hint { display: none; }
+
+@media (orientation: portrait) and (max-width: 727px) {
+  .rotate-hint {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    color: #444;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+}
+
+/* ---- 手机横屏 / 低高度视口适配（压缩垂直空间，尽量一屏看完） ---- */
+@media (max-height: 520px) {
+  .app {
+    margin: 4px auto;
+    padding: 6px 10px 8px;
+    border-radius: 4px;
+  }
+
+  .titlebar { display: none; }
+  .row { margin-bottom: 4px; }
+  .sc { height: 26px; }
+  .flat-btn { height: 26px; }
+  .zhan-input { height: 26px; }
+  .main-row { gap: 10px; margin-top: 4px; }
+  .yao-row { height: 26px; margin-bottom: 2px; }
+  .yao-btn { height: 26px; font-size: 14px; }
+  .action-btn { height: 26px; margin-top: 3px; }
+  .chk { width: 20px; height: 20px; }
+
+  .result {
+    min-height: 0;
+    max-height: none;
+    padding: 6px 8px;
+    font-size: 10.5pt;
+  }
+
+  .dialog { max-width: calc(100vw - 20px); }
+  .dialog-body { padding: 8px 8px 4px; gap: 14px; }
+  .qr-box img { width: 110px; height: 110px; }
+  .toast { bottom: 16px; }
+}
